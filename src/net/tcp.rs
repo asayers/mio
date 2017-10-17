@@ -289,6 +289,7 @@ impl TcpStream {
     ///
     /// If this is set to `false` then the socket can be used to send and
     /// receive packets from an IPv4-mapped IPv6 address.
+    #[deprecated(since = "0.7.0", note = "this option can only be set before the socket is bound")]
     pub fn set_only_v6(&self, only_v6: bool) -> io::Result<()> {
         self.sys.set_only_v6(only_v6)
     }
@@ -298,6 +299,7 @@ impl TcpStream {
     /// For more information about this option, see [`set_only_v6`][link].
     ///
     /// [link]: #method.set_only_v6
+    #[deprecated(since = "0.7.0", note = "this option can only be set before the socket is bound")]
     pub fn only_v6(&self) -> io::Result<bool> {
         self.sys.only_v6()
     }
@@ -610,6 +612,7 @@ impl TcpListener {
     ///
     /// If this is set to `false` then the socket can be used to send and
     /// receive packets from an IPv4-mapped IPv6 address.
+    #[deprecated(since = "0.7.0", note = "this option can only be set before the socket is bound")]
     pub fn set_only_v6(&self, only_v6: bool) -> io::Result<()> {
         self.sys.set_only_v6(only_v6)
     }
@@ -619,6 +622,7 @@ impl TcpListener {
     /// For more information about this option, see [`set_only_v6`][link].
     ///
     /// [link]: #method.set_only_v6
+    #[deprecated(since = "0.7.0", note = "this option can only be set before the socket is bound")]
     pub fn only_v6(&self) -> io::Result<bool> {
         self.sys.only_v6()
     }
