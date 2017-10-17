@@ -72,8 +72,8 @@ impl UdpSocket {
     ///
     /// Address type can be any implementor of `ToSocketAddrs` trait. See its
     /// documentation for concrete examples.
-    pub fn send_to(&self, buf: &[u8], target: &SocketAddr) -> io::Result<usize> {
-        self.sys.send_to(buf, target)
+    pub fn send_to(&self, buf: &[u8], addr: &SocketAddr) -> io::Result<usize> {
+        self.sys.send_to(buf, addr)
     }
 
     /// Receives data from the socket. On success, returns the number of bytes
@@ -105,8 +105,8 @@ impl UdpSocket {
     ///
     /// When enabled, this socket is allowed to send packets to a broadcast
     /// address.
-    pub fn set_broadcast(&self, on: bool) -> io::Result<()> {
-        self.sys.set_broadcast(on)
+    pub fn set_broadcast(&self, broadcast: bool) -> io::Result<()> {
+        self.sys.set_broadcast(broadcast)
     }
 
     /// Gets the value of the `SO_BROADCAST` option for this socket.
@@ -123,8 +123,8 @@ impl UdpSocket {
     ///
     /// If enabled, multicast packets will be looped back to the local socket.
     /// Note that this may not have any affect on IPv6 sockets.
-    pub fn set_multicast_loop_v4(&self, on: bool) -> io::Result<()> {
-        self.sys.set_multicast_loop_v4(on)
+    pub fn set_multicast_loop_v4(&self, multicast_loop_v4: bool) -> io::Result<()> {
+        self.sys.set_multicast_loop_v4(multicast_loop_v4)
     }
 
     /// Gets the value of the `IP_MULTICAST_LOOP` option for this socket.
@@ -144,8 +144,8 @@ impl UdpSocket {
     /// don't leave the local network unless explicitly requested.
     ///
     /// Note that this may not have any affect on IPv6 sockets.
-    pub fn set_multicast_ttl_v4(&self, ttl: u32) -> io::Result<()> {
-        self.sys.set_multicast_ttl_v4(ttl)
+    pub fn set_multicast_ttl_v4(&self, multicast_ttl_v4: u32) -> io::Result<()> {
+        self.sys.set_multicast_ttl_v4(multicast_ttl_v4)
     }
 
     /// Gets the value of the `IP_MULTICAST_TTL` option for this socket.
@@ -162,8 +162,8 @@ impl UdpSocket {
     ///
     /// Controls whether this socket sees the multicast packets it sends itself.
     /// Note that this may not have any affect on IPv4 sockets.
-    pub fn set_multicast_loop_v6(&self, on: bool) -> io::Result<()> {
-        self.sys.set_multicast_loop_v6(on)
+    pub fn set_multicast_loop_v6(&self, multicast_loop_v6: bool) -> io::Result<()> {
+        self.sys.set_multicast_loop_v6(multicast_loop_v6)
     }
 
     /// Gets the value of the `IPV6_MULTICAST_LOOP` option for this socket.
