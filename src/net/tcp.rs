@@ -508,8 +508,9 @@ impl TcpListener {
             SocketAddr::V6(..) => TcpBuilder::new_v6(),
         }?;
 
-        // Set SO_REUSEADDR, but only on Unix (mirrors what libstd does)
-        if cfg!(unix) {
+        // Set SO_REUSEADDR, but only on platforms with Berkeley-derived sockets (mirrors what
+        // libstd does)
+        if !cfg!(windows) {
             sock.reuse_address(true)?;
         }
 
